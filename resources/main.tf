@@ -32,7 +32,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   ip_protocol       = "-1" # semantically equivalent to all ports
 }
 
-resource "aws_instance" "frontend" {
+resource "aws_instance" "frontend-dev" {
   ami           = "ami-00adafae70b8029d8"
   instance_type = "t3.small"
   security_groups = [aws_security_group.allow_ports_firewall_roboshop.id]
@@ -42,10 +42,10 @@ resource "aws_instance" "frontend" {
   }
 }
 
-resource "aws_route53_record" "frontend" {
+resource "aws_route53_record" "frontend-dev" {
   zone_id = "Z01214421PKKTLXAI5VN5"
   name    = "frontend-dev"
   type    = "A"
   ttl     = 300
-  records = [aws_instance.frontend.public_ip]
+  records = [aws_instance.frontend-dev.public_ip]
 }
