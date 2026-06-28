@@ -35,7 +35,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 resource "aws_instance" "frontend-dev" {
   ami           = "ami-00adafae70b8029d8"
   instance_type = "t3.small"
-  security_groups = [aws_security_group.allow_ports_firewall_roboshop.id]
+  security_groups = [aws_security_group.allow_ports_firewall_roboshop.name]
   key_name     = "aws-helpag"
   tags = {
     Name = "frontend-dev"
