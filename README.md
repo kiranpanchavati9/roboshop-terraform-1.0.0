@@ -1,0 +1,1 @@
+# roboshop-terraform-1.0.0
